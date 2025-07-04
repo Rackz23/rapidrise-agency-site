@@ -109,10 +109,17 @@
       background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
       pointer-events: none;
     }
-    .hero-inner { position: relative; z-index: 1; text-align: center; color: var(--color-cta-text); top: 50%; transform: translateY(-50%); padding: 0 var(--sp-sm); }
-    .hero-inner h1 { font-family: var(--font-heading); font-size: var(--fz-2xl); margin-bottom: var(--sp-sm); }
-    .hero-inner p { font-size: var(--fz-lg); margin-bottom: var(--sp-md); }
-
+  .hero-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--color-text-hero);
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 var(--sp-sm);
+    }
+    .hero-inner h1 { font-family: var(--font-heading); font-size: var(--fz-2xl); margin-bottom: var(--sp-sm); color: var(--color-text-hero); }
+    .hero-inner p { font-size: var(--fz-lg); margin-bottom: var(--sp-md); color: var(--color-text-hero); }
     /* Value Proposition Cards */
     .value-prop-section { padding: var(--sp-xl) 0; background: #13131a; }
     .prop-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }

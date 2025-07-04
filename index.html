@@ -6,359 +6,165 @@
   <title>RapidRise Agency</title>
   <style>
     :root {
-      /* Brand Colors */
-      --color-brand-primary: #0044cc;
+      /* Color Palette */
+      --color-bg-dark: #0a0a0f;
+      --color-text-light: #e0e0e0;
+      --color-neon: #00fff0;
       --color-brand-accent: #ff6600;
-      --color-cta-text: #ffffff;
-      --color-cta-hover: #e65500;
-      /* Text & Background */
-      --color-text-dark: #222222;
-      --color-text-light: #555555;
-      --color-bg-light: #f9f9f9;
+      --color-cta-text: #0a0a0f;
       /* Typography */
-      --font-family-sans: 'Inter', sans-serif;
-      --font-family-heading: 'Montserrat', sans-serif;
-      --font-size-base: 1rem;
-      --font-size-lg: 1.125rem;
-      --font-size-xl: 1.25rem;
-      --font-size-2xl: 1.5rem;
+      --font-sans: 'Inter', sans-serif;
+      --font-heading: 'Montserrat', sans-serif;
+      --fz-base: 1rem;
+      --fz-lg: 1.125rem;
+      --fz-xl: 1.25rem;
+      --fz-2xl: 2rem;
       /* Spacing */
-      --space-xs: 0.5rem;
-      --space-sm: 1rem;
-      --space-md: 1.5rem;
-      --space-lg: 2rem;
-      --space-xl: 3rem;
-      /* Radius & Shadows */
-      --radius-sm: 0.25rem;
-      --radius-md: 0.5rem;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-      /* Transition */
-      --transition-fast: all 0.2s ease-in-out;
+      --sp-xs: 0.5rem;
+      --sp-sm: 1rem;
+      --sp-md: 1.5rem;
+      --sp-lg: 2rem;
+      --sp-xl: 3rem;
+      /* Other */
+      --radius: 0.5rem;
+      --shadow: 0 4px 6px rgba(0,0,0,0.3);
+      --transition: all 0.3s ease-in-out;
     }
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: var(--font-family-sans);
-      color: var(--color-text-dark);
-      background-color: var(--color-bg-light);
+      font-family: var(--font-sans);
+      color: var(--color-text-light);
+      background: var(--color-bg-dark);
       line-height: 1.6;
     }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
     /* Navigation & Header */
     header#main-nav {
-      background: var(--color-bg-light);
-      position: sticky;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
       top: 0;
       z-index: 1000;
-      box-shadow: var(--shadow-sm);
+      padding: var(--sp-sm) 0;
     }
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--space-sm) 0;
-    }
-    .logo {
-      font-family: var(--font-family-heading);
-      font-size: var(--font-size-xl);
-      color: var(--color-text-dark);
-    }
-    nav ul {
-      display: flex;
-      gap: var(--space-lg);
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    nav li {
-      position: relative;
-    }
-    nav > ul > li > a {
-      font-weight: 500;
-      font-size: var(--font-size-base);
-      color: var(--color-text-dark);
-      padding: var(--space-xs) 0;
-    }
-    /* Submenu (mega) */
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--font-heading); font-size: var(--fz-xl); font-weight: bold; }
+    nav ul { display: flex; gap: var(--sp-lg); list-style: none; margin: 0; }
+    nav li { position: relative; }
+    nav > ul > li > a { font-weight: 500; }
     .submenu {
       position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      box-shadow: var(--shadow-md);
-      padding: var(--space-md);
+      top: 100%; left: 0;
+      background: #13131a;
+      padding: var(--sp-md);
+      border-radius: var(--radius);
       display: none;
-      width: 240px;
+      box-shadow: var(--shadow);
     }
-    nav li:hover .submenu {
-      display: block;
-    }
-    .submenu a {
-      display: block;
-      margin-bottom: var(--space-xs);
-      color: var(--color-text-dark);
-      font-size: var(--font-size-base);
-    }
-    /* Mobile Nav */
+    nav li:hover .submenu { display: block; }
+    .submenu a { display: block; margin-bottom: var(--sp-xs); }
     .nav-toggle {
       display: none;
+      font-size: 1.5rem;
       background: none;
       border: none;
-      font-size: 1.5rem;
+      color: var(--color-text-light);
       cursor: pointer;
     }
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: var(--color-bg-light);
-        width: 100%;
-        position: absolute;
-        top: 100%;
-        left: 0;
-      }
-      nav ul.open {
-        display: flex;
-      }
-      nav li:hover .submenu {
-        display: none;
-      }
-      .nav-toggle {
-        display: block;
-      }
-    }
     .btn-primary {
-      background-color: var(--color-brand-accent);
+      background: var(--color-neon);
       color: var(--color-cta-text);
-      padding: var(--space-xs) var(--space-md);
-      border: none;
-      border-radius: var(--radius-md);
-      font-size: var(--font-size-base);
-      transition: var(--transition-fast);
+      padding: var(--sp-xs) var(--sp-md);
+      border-radius: var(--radius);
+      box-shadow: 0 0 8px var(--color-neon);
+      transition: var(--transition);
     }
     .btn-primary:hover {
-      background-color: var(--color-cta-hover);
+      box-shadow: 0 0 16px var(--color-neon);
+      transform: scale(1.05);
+    }
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      nav ul { display: none; flex-direction: column; background: #13131a; position: absolute; top: 100%; left: 0; width: 100%; }
+      nav ul.open { display: flex; }
+      nav li:hover .submenu { display: none; }
     }
 
-    /* Hero & Value Proposition */
+    /* Hero with Slider & Gradient Overlay */
     .hero-section {
-      background-color: var(--color-brand-primary);
-      color: var(--color-cta-text);
-      text-align: center;
-      padding: var(--space-xl) 0;
+      position: relative;
+      width: 100%; height: 80vh;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
     }
-    .hero-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 var(--space-md);
+    .hero-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+      pointer-events: none;
     }
-    .hero-section h1 {
-      font-family: var(--font-family-heading);
-      font-size: var(--font-size-2xl);
-      margin-bottom: var(--space-sm);
-      line-height: 1.2;
-    }
-    .hero-section p {
-      font-size: var(--font-size-lg);
-      margin-bottom: var(--space-md);
-    }
-    .value-prop-section {
-      background: var(--color-bg-light);
-      padding: var(--space-xl) 0;
-    }
-    .prop-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      justify-content: center;
-    }
-    .prop-card {
-      background: #fff;
-      padding: var(--space-md);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      flex: 1 1 250px;
-      text-align: center;
-    }
-    .prop-card h3 {
-      font-family: var(--font-family-heading);
-      font-size: var(--font-size-xl);
-      margin-bottom: var(--space-xs);
-    }
-    .prop-card p {
-      font-size: var(--font-size-base);
-      color: var(--color-text-light);
-      margin: 0;
-    }
+    .hero-inner { position: relative; z-index: 1; text-align: center; color: var(--color-cta-text); top: 50%; transform: translateY(-50%); padding: 0 var(--sp-sm); }
+    .hero-inner h1 { font-family: var(--font-heading); font-size: var(--fz-2xl); margin-bottom: var(--sp-sm); }
+    .hero-inner p { font-size: var(--fz-lg); margin-bottom: var(--sp-md); }
+
+    /* Value Proposition Cards */
+    .value-prop-section { padding: var(--sp-xl) 0; background: #13131a; }
+    .prop-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }
+    .prop-card { background: rgba(20,20,28,0.9); padding: var(--sp-md); border-radius: var(--radius); box-shadow: var(--shadow); flex: 1 1 280px; text-align: center; }
+    .prop-card h3 { font-family: var(--font-heading); margin-bottom: var(--sp-xs); }
+    .prop-card p { margin-bottom: var(--sp-sm); color: var(--color-text-light); }
 
     /* Trust Signals */
-    .trust-section {
-      padding: var(--space-xl) 0;
-      text-align: center;
-    }
-    .trust-section h2 {
-      font-family: var(--font-family-heading);
-      font-size: var(--font-size-xl);
-      margin-bottom: var(--space-md);
-    }
-    .logo-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-lg);
-      justify-content: center;
-      align-items: center;
-    }
-    .logo-grid img {
-      filter: grayscale(100%);
-      opacity: 0.7;
-      transition: var(--transition-fast);
-      max-height: 50px;
-    }
-    .logo-grid img:hover {
-      filter: none;
-      opacity: 1;
-    }
+    .trust-section { padding: var(--sp-xl) 0; text-align: center; }
+    .trust-section h2 { font-family: var(--font-heading); margin-bottom: var(--sp-md); }
+    .logo-grid { display: flex; flex-wrap: wrap; gap: var(--sp-lg); justify-content: center; align-items: center; }
+    .logo-grid img { filter: saturate(0%); opacity: 0.6; transition: var(--transition); max-height: 50px; }
+    .logo-grid img:hover { filter: none; opacity: 1; }
 
     /* Services & Outcomes */
-    .services-section {
-      background: var(--color-bg-light);
-      padding: var(--space-xl) 0;
-    }
-    .services-section h2 {
-      text-align: center;
-      font-family: var(--font-family-heading);
-      font-size: var(--font-size-xl);
-      margin-bottom: var(--space-md);
-    }
-    .service-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      justify-content: center;
-    }
-    .service-card {
-      background: #fff;
-      padding: var(--space-md);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      flex: 1 1 250px;
-      text-align: center;
-    }
-    .service-card h3 {
-      font-family: var(--font-family-heading);
-      font-size: var(--font-size-lg);
-      margin-bottom: var(--space-xs);
-    }
-    .service-card p {
-      font-size: var(--font-size-base);
-      color: var(--color-text-light);
-    }
+    .services-section { padding: var(--sp-xl) 0; background: #13131a; }
+    .services-section h2 { text-align: center; font-family: var(--font-heading); margin-bottom: var(--sp-md); }
+    .service-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }
+    .service-card { background: rgba(20,20,28,0.9); padding: var(--sp-md); border-radius: var(--radius); box-shadow: var(--shadow); flex: 1 1 250px; text-align: center; }
+    .service-card h3 { margin-bottom: var(--sp-xs); }
+    .service-card p { color: var(--color-text-light); }
 
     /* Case Study Highlight */
-    .case-section {
-      padding: var(--space-xl) 0;
-      background: var(--color-bg-light);
-    }
-    .case-inner {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-lg);
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-md);
-    }
-    .case-media { flex: 1 1 400px; text-align: center; }
-    .case-content { flex: 1 1 400px; }
-    .case-content h2 {
-      font-family: var(--font-family-heading);
-      font-size: var(--font-size-xl);
-      margin-bottom: var(--space-sm);
-    }
-    .case-content p {
-      margin-bottom: var(--space-md);
-    }
-    .case-content .btn-primary {
-      margin-top: var(--space-sm);
-    }
+    .case-section { padding: var(--sp-xl) 0; text-align: center; }
+    .case-inner { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-lg); justify-content: center; }
+    .case-media img { border-radius: var(--radius); box-shadow: var(--shadow); max-width: 100%; }
+    .case-content h2 { font-family: var(--font-heading); margin-bottom: var(--sp-sm); }
+    .case-content p { margin-bottom: var(--sp-md); color: var(--color-text-light); }
 
     /* Process & Team */
-    .process-section {
-      background: var(--color-bg-light);
-      padding: var(--space-xl) 0;
-    }
-    .process-inner { text-align: center; max-width: 1200px; margin: 0 auto; }
-    .process-steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      justify-content: center;
-      margin-bottom: var(--space-xl);
-    }
-    .step {
-      flex: 1 1 200px;
-    }
-    .step-icon { font-size: 2rem; margin-bottom: var(--space-xs); }
-    .meet-team {
-      font-size: var(--font-size-base);
-    }
+    .process-section { padding: var(--sp-xl) 0; background: #13131a; text-align: center; }
+    .process-steps { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; margin-bottom: var(--sp-lg); }
+    .step { background: rgba(20,20,28,0.9); padding: var(--sp-md); border-radius: var(--radius); box-shadow: var(--shadow); flex: 1 1 180px; }
+    .step-icon { font-size: 2rem; margin-bottom: var(--sp-xs); }
 
     /* Insights & Resources */
-    .insights-section {
-      padding: var(--space-xl) 0;
-    }
-    .insights-inner { max-width: 1200px; margin: 0 auto; }
-    .insights-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      justify-content: center;
-    }
-    .insight-card {
-      background: #fff;
-      padding: var(--space-md);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      flex: 1 1 300px;
-    }
-    .insight-card h4 {
-      font-family: var(--font-family-heading);
-      margin-bottom: var(--space-xs);
-    }
-    .insight-card p {
-      font-size: var(--font-size-base);
-      color: var(--color-text-light);
-      margin-bottom: var(--space-sm);
-    }
+    .insights-section { padding: var(--sp-xl) 0; }
+    .insights-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }
+    .insight-card { background: rgba(20,20,28,0.9); padding: var(--sp-md); border-radius: var(--radius); box-shadow: var(--shadow); flex: 1 1 300px; text-align: center; }
+    .insight-card h4 { margin-bottom: var(--sp-xs); }
+    .insight-card p { margin-bottom: var(--sp-sm); color: var(--color-text-light); }
 
     /* Footer & Compliance */
-    footer {
-      background: var(--color-bg-light);
-      padding: var(--space-lg) 0;
-      font-size: var(--font-size-base);
-      color: var(--color-text-light);
-    }
-    .footer-nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-lg);
-      list-style: none;
-      justify-content: center;
-      padding: 0;
-      margin: 0 0 var(--space-md) 0;
-    }
-    .footer-compliance {
-      text-align: center;
-    }
+    footer { background: rgba(10,10,15,0.9); padding: var(--sp-lg) 0; color: var(--color-text-light); }
+    .footer-nav ul { display: flex; flex-wrap: wrap; gap: var(--sp-lg); list-style: none; justify-content: center; margin-bottom: var(--sp-md); padding: 0; }
+    .footer-compliance p { text-align: center; margin: var(--sp-xs) 0; font-size: var(--fz-base); }
 
     /* Responsive */
     @media (max-width: 600px) {
-      .hero-section h1 { font-size: var(--font-size-xl); }
-      .hero-section p { font-size: var(--font-size-base); }
+      .hero-inner h1 { font-size: var(--fz-xl); }
+      .hero-inner p { font-size: var(--fz-base); }
+      nav ul { gap: var(--sp-sm); }
     }
   </style>
 </head>
@@ -390,14 +196,13 @@
     </div>
   </header>
 
-  <!-- Hero & Value Proposition -->
-  <section class="hero-section" id="hero">
-    <div class="hero-inner">
-      <h1>Drive better outcomes, for you and your customers</h1>
-      <p>We craft high-converting websites for HVAC, plumbing & electrical pros—fast and hassle-free.</p>
-      <a href="#contact" class="btn-primary">Explore our work</a>
-    </div>
-  </section>
+  <!-- Hero & Value Proposition with Sliding Background -->
+  <section class="hero-section" id="hero"></section>
+  <div class="hero-inner">
+    <h1>Drive better outcomes, for you and your customers</h1>
+    <p>We craft futuristic, high-converting websites for HVAC, plumbing & electrical pros—fast and hassle-free.</p>
+    <a href="#contact" class="btn-primary">Explore our work</a>
+  </div>
 
   <!-- Key Proposition Cards -->
   <section class="value-prop-section" id="value-prop">
@@ -413,7 +218,7 @@
         <a href="#about" class="btn-primary">Find out more</a>
       </div>
       <div class="prop-card">
-        <h3>Future-proof commerce & productivity systems</h3>
+        <h3>Future-proof systems & scalability</h3>
         <p>Scalable solutions that evolve with your business and drive continuous growth.</p>
         <a href="#services" class="btn-primary">Find out more</a>
       </div>
@@ -435,7 +240,7 @@
 
   <!-- Services & Outcomes -->
   <section class="services-section" id="services-outcomes">
-    <h2>Digital products that improve our lives and businesses</h2>
+    <h2>Digital products that improve lives & businesses</h2>
     <div class="container service-cards">
       <div class="service-card">
         <h3>Return on Investment</h3>
@@ -446,28 +251,28 @@
         <p>Rapid prototyping and agile development mean you see results in weeks, not months.</p>
       </div>
       <div class="service-card">
-        <h3>Strategic Objectives</h3>
-        <p>Align technology solutions with your business goals for measurable growth.</p>
+        <h3>Strategic Alignment</h3>
+        <p>We align every pixel and line of code with your business goals.</p>
       </div>
       <div class="service-card">
-        <h3>Enhanced Conversion</h3>
-        <p>Data-driven design and optimization ensure every visitor has a clear path to action.</p>
+        <h3>Optimised Conversion</h3>
+        <p>Data-driven design ensures every visitor has a clear path to action.</p>
       </div>
     </div>
-    <div style="text-align:center; margin-top: var(--space-md);">
+    <div style="text-align:center; margin-top: var(--sp-md);">
       <a href="#contact" class="btn-primary">Get in touch</a>
     </div>
   </section>
 
   <!-- Case Study Highlight -->
   <section class="case-section" id="case-study">
-    <div class="case-inner">
+    <div class="case-inner container">
       <div class="case-media">
         <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank"><img src="assets/case-video-thumb.png" alt="Play Case Study Video"></a>
       </div>
       <div class="case-content">
         <h2>An expert in our back pocket</h2>
-        <p>See how SSE Energy doubled their online bookings after launching a new site powered by RapidRise Agency.</p>
+        <p>Discover how SSE Energy doubled online bookings with our futuristic site.</p>
         <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="btn-primary">Watch the full story</a>
       </div>
     </div>
@@ -475,52 +280,52 @@
 
   <!-- Process & Team -->
   <section class="process-section" id="process-team">
-    <div class="process-inner">
+    <div class="container process-inner">
       <h2>Our Four-Step Process</h2>
       <div class="process-steps">
         <div class="step">
           <div class="step-icon">🧩</div>
           <h3>Strategise</h3>
-          <p>Deep dive into your business goals and audience needs.</p>
+          <p>Dive deep into goals & audience to map your success path.</p>
         </div>
         <div class="step">
           <div class="step-icon">🎨</div>
           <h3>Design</h3>
-          <p>Create intuitive, brand-aligned interfaces that engage.</p>
+          <p>Create intuitive, brand-forward interfaces that engage deeply.</p>
         </div>
         <div class="step">
           <div class="step-icon">💻</div>
           <h3>Develop</h3>
-          <p>Build responsive, high-performing sites with clean code.</p>
+          <p>Build performant, responsive sites with clean, future-ready code.</p>
         </div>
         <div class="step">
           <div class="step-icon">⚙️</div>
           <h3>Optimise</h3>
-          <p>Continuously improve based on data and user feedback.</p>
+          <p>Continuously refine using data to maximise conversions.</p>
         </div>
       </div>
-      <p class="meet-team">Meet our team of 150+ experts committed to your success.</p>
+      <p>Meet our team of 150+ experts, united by a passion for innovation.</p>
     </div>
   </section>
 
   <!-- Insights & Resources -->
   <section class="insights-section" id="insights">
-    <div class="insights-inner">
+    <div class="container insights-inner">
       <h2>Explore More Insights</h2>
       <div class="insights-cards">
         <div class="insight-card">
           <h4>5 Signs Your HVAC Site Needs a Redesign</h4>
-          <p>Learn the key indicators that your website may be holding back your business.</p>
+          <p>Identify the key indicators that your website is underperforming.</p>
           <a href="#" class="btn-primary">Read more</a>
         </div>
         <div class="insight-card">
-          <h4>Maximizing Lead Gen with Plumbing Websites</h4>
-          <p>Strategies to turn visitors into customers on your plumbing site.</p>
+          <h4>Maximizing Lead Gen with Plumbing Sites</h4>
+          <p>Top strategies to convert visitors into customers seamlessly.</p>
           <a href="#" class="btn-primary">Read more</a>
         </div>
         <div class="insight-card">
           <h4>Electrify Your Online Presence</h4>
-          <p>Optimizing electrical contractor sites for speed and conversion.</p>
+          <p>Optimize your electrical contracting website for speed & conversion.</p>
           <a href="#" class="btn-primary">Read more</a>
         </div>
       </div>
@@ -549,9 +354,22 @@
     // Mobile menu toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navList = document.querySelector('nav ul');
-    navToggle.addEventListener('click', () => {
-      navList.classList.toggle('open');
-    });
+    navToggle.addEventListener('click', () => navList.classList.toggle('open'));
+
+    // Hero background slider
+    const hero = document.querySelector('.hero-section');
+    const slides = [
+      'url("assets/bg1.jpg")',
+      'url("assets/bg2.jpg")',
+      'url("assets/bg3.jpg")'
+    ];
+    let slideIdx = 0;
+    function nextSlide() {
+      slideIdx = (slideIdx + 1) % slides.length;
+      hero.style.backgroundImage = slides[slideIdx];
+    }
+    hero.style.backgroundImage = slides[0];
+    setInterval(nextSlide, 5000);
   </script>
 </body>
 </html>

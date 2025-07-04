@@ -29,6 +29,7 @@
       --space-lg: 2rem;
       --space-xl: 3rem;
       /* Radius & Shadows */
+      --radius-sm: 0.25rem;
       --radius-md: 0.5rem;
       --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
       --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
@@ -46,6 +47,7 @@
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+
     /* Navigation & Header */
     header#main-nav {
       background: var(--color-bg-light);
@@ -54,22 +56,80 @@
       z-index: 1000;
       box-shadow: var(--shadow-sm);
     }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: var(--space-sm) 0; }
-    .logo { font-family: var(--font-family-heading); font-size: var(--font-size-xl); color: var(--color-text-dark); }
-    nav ul { display: flex; gap: var(--space-lg); list-style: none; margin: 0; padding: 0; }
-    nav li { position: relative; }
-    nav > ul > li > a { font-weight: 500; font-size: var(--font-size-base); color: var(--color-text-dark); }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-sm) 0;
+    }
+    .logo {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-xl);
+      color: var(--color-text-dark);
+    }
+    nav ul {
+      display: flex;
+      gap: var(--space-lg);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      position: relative;
+    }
+    nav > ul > li > a {
+      font-weight: 500;
+      font-size: var(--font-size-base);
+      color: var(--color-text-dark);
+      padding: var(--space-xs) 0;
+    }
     /* Submenu (mega) */
-    .submenu { position: absolute; top: 100%; left: 0; background: #fff; box-shadow: var(--shadow-md); padding: var(--space-md); display: none; width: 300px; }
-    nav li:hover .submenu { display: block; }
-    .submenu a { display: block; margin-bottom: var(--space-xs); color: var(--color-text-dark); }
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: var(--shadow-md);
+      padding: var(--space-md);
+      display: none;
+      width: 240px;
+    }
+    nav li:hover .submenu {
+      display: block;
+    }
+    .submenu a {
+      display: block;
+      margin-bottom: var(--space-xs);
+      color: var(--color-text-dark);
+      font-size: var(--font-size-base);
+    }
     /* Mobile Nav */
-    .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
     @media (max-width: 768px) {
-      nav ul { display: none; flex-direction: column; background: var(--color-bg-light); width: 100%; position: absolute; top: 100%; left: 0; }
-      nav ul.open { display: flex; }
-      nav li:hover .submenu { display: none; }
-      .nav-toggle { display: block; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--color-bg-light);
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+      nav ul.open {
+        display: flex;
+      }
+      nav li:hover .submenu {
+        display: none;
+      }
+      .nav-toggle {
+        display: block;
+      }
     }
     .btn-primary {
       background-color: var(--color-brand-accent);
@@ -80,26 +140,230 @@
       font-size: var(--font-size-base);
       transition: var(--transition-fast);
     }
-    .btn-primary:hover { background-color: var(--color-cta-hover); }
+    .btn-primary:hover {
+      background-color: var(--color-cta-hover);
+    }
+
     /* Hero & Value Proposition */
-    .hero-section { background-color: var(--color-brand-primary); color: var(--color-cta-text); text-align: center; padding: var(--space-xl) 0; }
-    .hero-inner { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
-    .hero-section h1 { font-family: var(--font-family-heading); font-size: var(--font-size-2xl); margin-bottom: var(--space-sm); line-height: 1.2; }
-    .hero-section p { font-size: var(--font-size-lg); margin-bottom: var(--space-md); }
-    .value-prop-section { background: var(--color-bg-light); padding: var(--space-xl) 0; }
-    .prop-cards { display: flex; flex-wrap: wrap; gap: var(--space-md); justify-content: center; }
-    .prop-card { background: #fff; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); flex: 1 1 250px; text-align: center; }
-    .prop-card h3 { font-family: var(--font-family-heading); font-size: var(--font-size-xl); margin-bottom: var(--space-xs); }
-    .prop-card p { font-size: var(--font-size-base); color: var(--color-text-light); margin: 0; }
+    .hero-section {
+      background-color: var(--color-brand-primary);
+      color: var(--color-cta-text);
+      text-align: center;
+      padding: var(--space-xl) 0;
+    }
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    .hero-section h1 {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--space-sm);
+      line-height: 1.2;
+    }
+    .hero-section p {
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--space-md);
+    }
+    .value-prop-section {
+      background: var(--color-bg-light);
+      padding: var(--space-xl) 0;
+    }
+    .prop-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      justify-content: center;
+    }
+    .prop-card {
+      background: #fff;
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      flex: 1 1 250px;
+      text-align: center;
+    }
+    .prop-card h3 {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--space-xs);
+    }
+    .prop-card p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-light);
+      margin: 0;
+    }
+
+    /* Trust Signals */
+    .trust-section {
+      padding: var(--space-xl) 0;
+      text-align: center;
+    }
+    .trust-section h2 {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--space-md);
+    }
+    .logo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      justify-content: center;
+      align-items: center;
+    }
+    .logo-grid img {
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: var(--transition-fast);
+      max-height: 50px;
+    }
+    .logo-grid img:hover {
+      filter: none;
+      opacity: 1;
+    }
+
+    /* Services & Outcomes */
+    .services-section {
+      background: var(--color-bg-light);
+      padding: var(--space-xl) 0;
+    }
+    .services-section h2 {
+      text-align: center;
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--space-md);
+    }
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      justify-content: center;
+    }
+    .service-card {
+      background: #fff;
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      flex: 1 1 250px;
+      text-align: center;
+    }
+    .service-card h3 {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--space-xs);
+    }
+    .service-card p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-light);
+    }
+
+    /* Case Study Highlight */
+    .case-section {
+      padding: var(--space-xl) 0;
+      background: var(--color-bg-light);
+    }
+    .case-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    .case-media { flex: 1 1 400px; text-align: center; }
+    .case-content { flex: 1 1 400px; }
+    .case-content h2 {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--space-sm);
+    }
+    .case-content p {
+      margin-bottom: var(--space-md);
+    }
+    .case-content .btn-primary {
+      margin-top: var(--space-sm);
+    }
+
+    /* Process & Team */
+    .process-section {
+      background: var(--color-bg-light);
+      padding: var(--space-xl) 0;
+    }
+    .process-inner { text-align: center; max-width: 1200px; margin: 0 auto; }
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      justify-content: center;
+      margin-bottom: var(--space-xl);
+    }
+    .step {
+      flex: 1 1 200px;
+    }
+    .step-icon { font-size: 2rem; margin-bottom: var(--space-xs); }
+    .meet-team {
+      font-size: var(--font-size-base);
+    }
+
+    /* Insights & Resources */
+    .insights-section {
+      padding: var(--space-xl) 0;
+    }
+    .insights-inner { max-width: 1200px; margin: 0 auto; }
+    .insights-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      justify-content: center;
+    }
+    .insight-card {
+      background: #fff;
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      flex: 1 1 300px;
+    }
+    .insight-card h4 {
+      font-family: var(--font-family-heading);
+      margin-bottom: var(--space-xs);
+    }
+    .insight-card p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-light);
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Footer & Compliance */
+    footer {
+      background: var(--color-bg-light);
+      padding: var(--space-lg) 0;
+      font-size: var(--font-size-base);
+      color: var(--color-text-light);
+    }
+    .footer-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      list-style: none;
+      justify-content: center;
+      padding: 0;
+      margin: 0 0 var(--space-md) 0;
+    }
+    .footer-compliance {
+      text-align: center;
+    }
+
     /* Responsive */
     @media (max-width: 600px) {
       .hero-section h1 { font-size: var(--font-size-xl); }
       .hero-section p { font-size: var(--font-size-base); }
     }
-    /* Additional sections to follow... */
   </style>
 </head>
 <body>
+  <!-- Navigation & Header -->
   <header id="main-nav">
     <div class="container nav-inner">
       <a href="/" class="logo">RapidRise Agency</a>
@@ -122,36 +386,164 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <a href="#demo-booking" class="btn-primary">Explore our work</a>
+      <a href="#contact" class="btn-primary">Get in touch</a>
     </div>
   </header>
 
+  <!-- Hero & Value Proposition -->
   <section class="hero-section" id="hero">
     <div class="hero-inner">
       <h1>Drive better outcomes, for you and your customers</h1>
       <p>We craft high-converting websites for HVAC, plumbing & electrical pros—fast and hassle-free.</p>
-      <a href="#demo-booking" class="btn-primary">Explore our work</a>
+      <a href="#contact" class="btn-primary">Explore our work</a>
     </div>
   </section>
 
+  <!-- Key Proposition Cards -->
   <section class="value-prop-section" id="value-prop">
-    <div class="container">
-      <div class="prop-cards">
-        <div class="prop-card">
-          <h3>Exceptional experiences for all</h3>
-          <p>Engaging designs that speak to your customers’ needs and boost trust.</p>
+    <div class="container prop-cards">
+      <div class="prop-card">
+        <h3>Exceptional experiences for all</h3>
+        <p>Engaging, intuitive designs that resonate with your customers and boost trust.</p>
+        <a href="#cases" class="btn-primary">Find out more</a>
+      </div>
+      <div class="prop-card">
+        <h3>Partners for your digital journey</h3>
+        <p>Collaborative process, transparent communication, and dedicated support at every step.</p>
+        <a href="#about" class="btn-primary">Find out more</a>
+      </div>
+      <div class="prop-card">
+        <h3>Future-proof commerce & productivity systems</h3>
+        <p>Scalable solutions that evolve with your business and drive continuous growth.</p>
+        <a href="#services" class="btn-primary">Find out more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals -->
+  <section class="trust-section" id="trust-signals">
+    <h2>Trusted by Leading Brands</h2>
+    <div class="container logo-grid">
+      <img src="assets/logo-arsenal.png" alt="Arsenal">
+      <img src="assets/logo-brompton.png" alt="Brompton">
+      <img src="assets/logo-reiss.png" alt="Reiss">
+      <img src="assets/logo-graze.png" alt="Graze">
+      <img src="assets/logo-virgin.png" alt="Virgin Trains">
+      <img src="assets/logo-tesco.png" alt="Tesco">
+    </div>
+  </section>
+
+  <!-- Services & Outcomes -->
+  <section class="services-section" id="services-outcomes">
+    <h2>Digital products that improve our lives and businesses</h2>
+    <div class="container service-cards">
+      <div class="service-card">
+        <h3>Return on Investment</h3>
+        <p>Our sites pay for themselves through increased lead volume and higher conversion rates.</p>
+      </div>
+      <div class="service-card">
+        <h3>Accelerated Innovation</h3>
+        <p>Rapid prototyping and agile development mean you see results in weeks, not months.</p>
+      </div>
+      <div class="service-card">
+        <h3>Strategic Objectives</h3>
+        <p>Align technology solutions with your business goals for measurable growth.</p>
+      </div>
+      <div class="service-card">
+        <h3>Enhanced Conversion</h3>
+        <p>Data-driven design and optimization ensure every visitor has a clear path to action.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: var(--space-md);">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+    </div>
+  </section>
+
+  <!-- Case Study Highlight -->
+  <section class="case-section" id="case-study">
+    <div class="case-inner">
+      <div class="case-media">
+        <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank"><img src="assets/case-video-thumb.png" alt="Play Case Study Video"></a>
+      </div>
+      <div class="case-content">
+        <h2>An expert in our back pocket</h2>
+        <p>See how SSE Energy doubled their online bookings after launching a new site powered by RapidRise Agency.</p>
+        <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="btn-primary">Watch the full story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process & Team -->
+  <section class="process-section" id="process-team">
+    <div class="process-inner">
+      <h2>Our Four-Step Process</h2>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-icon">🧩</div>
+          <h3>Strategise</h3>
+          <p>Deep dive into your business goals and audience needs.</p>
         </div>
-        <div class="prop-card">
-          <h3>Partners for your digital journey</h3>
-          <p>Collaborative approach, keeping you informed at every step.</p>
+        <div class="step">
+          <div class="step-icon">🎨</div>
+          <h3>Design</h3>
+          <p>Create intuitive, brand-aligned interfaces that engage.</p>
         </div>
-        <div class="prop-card">
-          <h3>Future-proof marketing & lead-gen</h3>
-          <p>Scalable solutions that grow with your business.</p>
+        <div class="step">
+          <div class="step-icon">💻</div>
+          <h3>Develop</h3>
+          <p>Build responsive, high-performing sites with clean code.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">⚙️</div>
+          <h3>Optimise</h3>
+          <p>Continuously improve based on data and user feedback.</p>
+        </div>
+      </div>
+      <p class="meet-team">Meet our team of 150+ experts committed to your success.</p>
+    </div>
+  </section>
+
+  <!-- Insights & Resources -->
+  <section class="insights-section" id="insights">
+    <div class="insights-inner">
+      <h2>Explore More Insights</h2>
+      <div class="insights-cards">
+        <div class="insight-card">
+          <h4>5 Signs Your HVAC Site Needs a Redesign</h4>
+          <p>Learn the key indicators that your website may be holding back your business.</p>
+          <a href="#" class="btn-primary">Read more</a>
+        </div>
+        <div class="insight-card">
+          <h4>Maximizing Lead Gen with Plumbing Websites</h4>
+          <p>Strategies to turn visitors into customers on your plumbing site.</p>
+          <a href="#" class="btn-primary">Read more</a>
+        </div>
+        <div class="insight-card">
+          <h4>Electrify Your Online Presence</h4>
+          <p>Optimizing electrical contractor sites for speed and conversion.</p>
+          <a href="#" class="btn-primary">Read more</a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Footer & Compliance -->
+  <footer>
+    <div class="container footer-nav">
+      <ul>
+        <li><a href="#about">Who we are</a></li>
+        <li><a href="#services">What we do</a></li>
+        <li><a href="#cases">Case studies</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="container footer-compliance">
+      <p>&copy; 2025 RapidRise Agency. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Accessibility Statement</a></p>
+    </div>
+  </footer>
 
   <script>
     // Mobile menu toggle

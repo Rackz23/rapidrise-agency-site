@@ -1,92 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RapidRise Agency</title>
-<link rel="stylesheet" href="styles/variables.css">
-<link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RapidRise Agency</title>
+  <style>
+    :root {
+      /* Brand Colors */
+      --color-brand-primary: #0044cc;
+      --color-brand-accent: #ff6600;
+      --color-cta-text: #ffffff;
+      --color-cta-hover: #e65500;
+      /* Text & Background */
+      --color-text-dark: #222222;
+      --color-text-light: #555555;
+      --color-bg-light: #f9f9f9;
+      /* Typography */
+      --font-family-sans: 'Inter', sans-serif;
+      --font-family-heading: 'Montserrat', sans-serif;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.125rem;
+      --font-size-xl: 1.25rem;
+      --font-size-2xl: 1.5rem;
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2rem;
+      --space-xl: 3rem;
+      /* Radius & Shadows */
+      --radius-md: 0.5rem;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      /* Transition */
+      --transition-fast: all 0.2s ease-in-out;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-family-sans);
+      color: var(--color-text-dark);
+      background-color: var(--color-bg-light);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+    /* Navigation & Header */
+    header#main-nav {
+      background: var(--color-bg-light);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: var(--space-sm) 0; }
+    .logo { font-family: var(--font-family-heading); font-size: var(--font-size-xl); color: var(--color-text-dark); }
+    nav ul { display: flex; gap: var(--space-lg); list-style: none; margin: 0; padding: 0; }
+    nav li { position: relative; }
+    nav > ul > li > a { font-weight: 500; font-size: var(--font-size-base); color: var(--color-text-dark); }
+    /* Submenu (mega) */
+    .submenu { position: absolute; top: 100%; left: 0; background: #fff; box-shadow: var(--shadow-md); padding: var(--space-md); display: none; width: 300px; }
+    nav li:hover .submenu { display: block; }
+    .submenu a { display: block; margin-bottom: var(--space-xs); color: var(--color-text-dark); }
+    /* Mobile Nav */
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; }
+    @media (max-width: 768px) {
+      nav ul { display: none; flex-direction: column; background: var(--color-bg-light); width: 100%; position: absolute; top: 100%; left: 0; }
+      nav ul.open { display: flex; }
+      nav li:hover .submenu { display: none; }
+      .nav-toggle { display: block; }
+    }
+    .btn-primary {
+      background-color: var(--color-brand-accent);
+      color: var(--color-cta-text);
+      padding: var(--space-xs) var(--space-md);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-base);
+      transition: var(--transition-fast);
+    }
+    .btn-primary:hover { background-color: var(--color-cta-hover); }
+    /* Hero & Value Proposition */
+    .hero-section { background-color: var(--color-brand-primary); color: var(--color-cta-text); text-align: center; padding: var(--space-xl) 0; }
+    .hero-inner { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+    .hero-section h1 { font-family: var(--font-family-heading); font-size: var(--font-size-2xl); margin-bottom: var(--space-sm); line-height: 1.2; }
+    .hero-section p { font-size: var(--font-size-lg); margin-bottom: var(--space-md); }
+    .value-prop-section { background: var(--color-bg-light); padding: var(--space-xl) 0; }
+    .prop-cards { display: flex; flex-wrap: wrap; gap: var(--space-md); justify-content: center; }
+    .prop-card { background: #fff; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); flex: 1 1 250px; text-align: center; }
+    .prop-card h3 { font-family: var(--font-family-heading); font-size: var(--font-size-xl); margin-bottom: var(--space-xs); }
+    .prop-card p { font-size: var(--font-size-base); color: var(--color-text-light); margin: 0; }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero-section h1 { font-size: var(--font-size-xl); }
+      .hero-section p { font-size: var(--font-size-base); }
+    }
+    /* Additional sections to follow... */
+  </style>
 </head>
 <body>
-<header id="main-nav">
-<a href="/" class="logo">RapidRise Agency</a>
-<nav>
-<a href="#demo-booking" class="btn-primary">Book a Demo</a>
-</nav>
-</header>
-<section id="hero">
-<h1>Crafting High-ROI Websites for Trade Professionals</h1>
-<p>From Discovery to Launch, we make your online presence a lead-generating machine—fast.</p>
-<a href="#demo-booking" class="btn-primary">Book Your Demo</a>
-</section>
-<section id="discovery-planning">
-<h2>1. Discovery &amp; Planning</h2>
-<ul>
-<li>Define brand positioning: craft your agency’s mission, vision, and UVP specifically for trade-professional clients <a href="https://webmarketers.ca" target="_blank">webmarketers.ca</a>.</li>
-<li>Identify target audience: outline personas for HVAC owners, plumbers, electricians, etc., including pain points and decision drivers <a href="https://webmarketers.ca" target="_blank">webmarketers.ca</a>.</li>
-<li>Conduct competitor analysis: audit 3–5 local/web-based competitors to benchmark services, pricing, and website features <a href="https://vendasta.com" target="_blank">vendasta.com</a>.</li>
-<li>Set business goals &amp; KPIs: e.g., demo-booking rate, lead-capture volume, demo page views <a href="https://webmarketers.ca" target="_blank">webmarketers.ca</a>.</li>
-</ul>
-</section>
-<section id="content-strategy">
-<h2>2. Content Strategy</h2>
-<ul>
-<li>Articulate a clear value proposition on your homepage hero: “RapidRise Agency crafts high-ROI websites for trade pros” <a href="https://vendasta.com" target="_blank">vendasta.com</a>.</li>
-<li>Develop service pages for “Website Design,” “SEO &amp; Marketing,” and “Demo Booking” with benefits, process steps, and pricing tiers <a href="https://vendasta.com" target="_blank">vendasta.com</a>.</li>
-<li>Create case studies &amp; portfolio entries: showcase 3–5 demos (including your HVAC demo) with before-after visuals and outcomes <a href="https://getjobber.com" target="_blank">getjobber.com</a>.</li>
-<li>Plan a blog/resources section: target trade-specific topics (e.g., “5 Signs Your HVAC Site Needs a Redesign”) to boost SEO and authority <a href="https://wisegrowthmarketing.com" target="_blank">wisegrowthmarketing.com</a>.</li>
-</ul>
-</section>
-<section id="design-ux">
-<h2>3. Design &amp; UX</h2>
-<ul>
-<li>Establish visual identity: finalize logo, color palette, typography, and imagery style that resonates with trade-professionals <a href="https://orbitmedia.com" target="_blank">orbitmedia.com</a>.</li>
-<li>Design a responsive layout: ensure desktop, tablet, and mobile breakpoints are wireframed and tested <a href="https://markup.io" target="_blank">markup.io</a>.</li>
-<li>Implement intuitive navigation: use clear menus, breadcrumb trails, and footer links for services and case studies <a href="https://designforce.co" target="_blank">designforce.co</a>.</li>
-<li>Incorporate trust signals: add testimonials, certifications, and client logos near CTAs to build credibility <a href="https://reddit.com" target="_blank">reddit.com</a>.</li>
-</ul>
-</section>
-<section id="technical-setup">
-<h2>4. Technical Setup</h2>
-<ul>
-<li>Choose platform &amp; hosting: evaluate options (e.g., Vercel for Next.js, Webflow, or WordPress) based on scalability and ease of updates <a href="https://github.com" target="_blank">github.com</a>.</li>
-<li>Optimize performance: implement image compression, caching, and code minification to achieve &lt;3s load times <a href="https://hostinger.com" target="_blank">hostinger.com</a>.</li>
-<li>Establish SEO foundations: configure meta titles/descriptions, heading structure (H1–H3), alt text, and schema markup <a href="https://support.squarespace.com" target="_blank">support.squarespace.com</a>.</li>
-<li>Ensure security &amp; compliance: install SSL, set up GDPR-compliant cookie notice, and publish privacy/terms pages <a href="https://elegantthemes.com" target="_blank">elegantthemes.com</a>.</li>
-</ul>
-</section>
-<section id="lead-gen-conversion">
-<h2>5. Lead Generation &amp; Conversion</h2>
-<ul>
-<li>Place prominent CTAs: “Book a Demo” buttons in header, hero, and sticky footer—linking to your scheduling tool (Calendly/Tally) <a href="https://vendasta.com" target="_blank">vendasta.com</a>.</li>
-<li>Integrate demo-booking form: collect name, business, email, and preferred time—keep it to 4 fields max for higher conversion <a href="https://getjobber.com" target="_blank">getjobber.com</a>.</li>
-<li>Add live chat or chatbot widget: offer instant answers and demo scheduling to reduce friction <a href="https://markup.io" target="_blank">markup.io</a>.</li>
-<li>Set up analytics &amp; tracking: Google Analytics, Search Console, and event tracking for CTA clicks and form submissions <a href="https://elegantthemes.com" target="_blank">elegantthemes.com</a>.</li>
-</ul>
-</section>
-<section id="marketing-backend">
-<h2>6. Marketing Backend (Optional)</h2>
-<ul>
-<li>Integrate email marketing: connect a tool like Mailchimp or HubSpot for nurture sequences post-booking <a href="https://agencyanalytics.com" target="_blank">agencyanalytics.com</a>.</li>
-<li>Configure CRM &amp; automation: sync form leads to Airtable or HubSpot; automate follow-ups and reminders via Zapier <a href="https://agencyanalytics.com" target="_blank">agencyanalytics.com</a>.</li>
-<li>Plan content marketing &amp; SEO growth: schedule monthly blog posts, on-page updates, and backlink outreach for trade-specific keywords <a href="https://sprinklr.com" target="_blank">sprinklr.com</a>.</li>
-</ul>
-</section>
-<section id="launch-post-launch">
-<h2>7. Launch &amp; Post-Launch</h2>
-<ul>
-<li>Run a pre-launch review: cross-browser testing, mobile speed test, broken links check, and 404 page setup <a href="https://elegantthemes.com" target="_blank">elegantthemes.com</a>.</li>
-<li>Execute post-launch promotion: announce on LinkedIn, email list, and trade-professional forums/groups <a href="https://hostinger.com" target="_blank">hostinger.com</a>.</li>
-<li>Schedule ongoing maintenance: set quarterly reviews for content updates, plugin/tech updates, and performance audits <a href="https://github.com" target="_blank">github.com</a>.</li>
-</ul>
-</section>
-<section id="demo-booking">
-<h2>Ready to transform your trade business?</h2>
-<a href="https://calendly.com/your-username/demo-call" class="btn-primary">Book Your Demo</a>
-</section>
-<footer>
-<p>&copy; 2025 RapidRise Agency. All rights reserved.</p>
-</footer>
+  <header id="main-nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo">RapidRise Agency</a>
+      <button class="nav-toggle" aria-label="Toggle Menu">☰</button>
+      <nav>
+        <ul>
+          <li><a href="#about">Who we are</a></li>
+          <li>
+            <a href="#services">What we do</a>
+            <div class="submenu">
+              <a href="#design">Digital Product Design</a>
+              <a href="#research">User Research</a>
+              <a href="#architecture">Technical Architecture</a>
+              <a href="#optimisation">Experience Optimisation</a>
+            </div>
+          </li>
+          <li><a href="#cases">Case studies</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#insights">Insights</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#demo-booking" class="btn-primary">Explore our work</a>
+    </div>
+  </header>
+
+  <section class="hero-section" id="hero">
+    <div class="hero-inner">
+      <h1>Drive better outcomes, for you and your customers</h1>
+      <p>We craft high-converting websites for HVAC, plumbing & electrical pros—fast and hassle-free.</p>
+      <a href="#demo-booking" class="btn-primary">Explore our work</a>
+    </div>
+  </section>
+
+  <section class="value-prop-section" id="value-prop">
+    <div class="container">
+      <div class="prop-cards">
+        <div class="prop-card">
+          <h3>Exceptional experiences for all</h3>
+          <p>Engaging designs that speak to your customers’ needs and boost trust.</p>
+        </div>
+        <div class="prop-card">
+          <h3>Partners for your digital journey</h3>
+          <p>Collaborative approach, keeping you informed at every step.</p>
+        </div>
+        <div class="prop-card">
+          <h3>Future-proof marketing & lead-gen</h3>
+          <p>Scalable solutions that grow with your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Mobile menu toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navList = document.querySelector('nav ul');
+    navToggle.addEventListener('click', () => {
+      navList.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
-

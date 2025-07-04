@@ -75,10 +75,24 @@
       display: none;
       flex-direction: column;
       box-shadow: var(--shadow);
+      z-index: 1001;
     }
     .submenu.open { display: flex; }
     nav li:hover .submenu { display: block; }
-    .submenu a, .submenu p { color: var(--color-text-light); margin-bottom: var(--sp-xs); font-size: var(--fz-base); }
+    /* Submenu Item Styles */
+    .submenu-item { margin-bottom: var(--sp-sm); }
+    .submenu-item strong {
+      display: block;
+      color: var(--color-neon);
+      font-size: var(--fz-base);
+      margin-bottom: var(--sp-xs);
+    }
+    .submenu-item span {
+      display: block;
+      color: var(--color-text-light);
+      font-size: var(--fz-base);
+      line-height: 1.4;
+    }
     .btn-primary {
       background: var(--color-neon);
       color: var(--color-cta-text);
@@ -248,22 +262,22 @@
         <ul>
           <li><a href="#about">Who we are</a></li>
           <li>
-  <a href="#services">What we do</a>
-  <div class="submenu">
-    <div class="submenu-item">
-      <strong>Web Design & Dev</strong>
-      <span>Custom designs for max ROI</span>
-    </div>
-    <div class="submenu-item">
-      <strong>Digital Marketing</strong>
-      <span>Full-funnel lead generation</span>
-    </div>
-    <div class="submenu-item">
-      <strong>Maintenance & Hosting</strong>
-      <span>24/7 site care & uptime</span>
-    </div>
-  </div>
-</li>
+            <a href="#services">What we do</a>
+            <div class="submenu">
+              <div class="submenu-item">
+                <strong>Web Design & Dev</strong>
+                <span>Custom designs for max ROI</span>
+              </div>
+              <div class="submenu-item">
+                <strong>Digital Marketing</strong>
+                <span>Full-funnel lead gen</span>
+              </div>
+              <div class="submenu-item">
+                <strong>Maintenance & Hosting</strong>
+                <span>24/7 site care & uptime</span>
+              </div>
+            </div>
+          </li>
           <li><a href="#cases">Case studies</a></li>
           <li><a href="#partners">Partners</a></li>
           <li><a href="#insights">Insights</a></li>
@@ -320,69 +334,30 @@
   <section class="services-section" id="services-outcomes">
     <h2>Digital products that improve lives & businesses</h2>
     <div class="container service-cards">
-      <div class="service-card">
-        <h3>Return on Investment</h3>
-        <p>Our sites pay for themselves through increased lead volume and higher conversion rates.</p>
-      </div>
-      <div class="service-card">
-        <h3>Accelerated Innovation</h3>
-        <p>Rapid prototyping and agile development mean you see results in weeks, not months.</p>
-      </div>
-      <div class="service-card">
-        <h3>Strategic Alignment</h3>
-        <p>We align every pixel and line of code with your business goals.</p>
-      </div>
-      <div class="service-card">
-        <h3>Optimised Conversion</h3>
-        <p>Data-driven design ensures every visitor has a clear path to action.</p>
-      </div>
+      <div class="service-card"><h3>Return on Investment</h3><p>Our sites pay for themselves through increased lead volume and higher conversion rates.</p></div>
+      <div class="service-card"><h3>Accelerated Innovation</h3><p>Rapid prototyping and agile development mean you see results in weeks, not months.</p></div>
+      <div class="service-card"><h3>Strategic Alignment</h3><p>We align every pixel and line of code with your business goals.</p></div>
+      <div class="service-card"><h3>Optimised Conversion</h3><p>Data-driven design ensures every visitor has a clear path to action.</p></div>
     </div>
-    <div style="text-align:center; margin-top: var(--sp-md);">
-      <a href="#contact" class="btn-primary">Get in touch</a>
-    </div>
+    <div style="text-align:center; margin-top: var(--sp-md);"><a href="#contact" class="btn-primary">Get in touch</a></div>
   </section>
 
   <!-- Case Study Highlight -->
   <section class="case-section" id="case-study">
     <div class="case-inner container">
-      <div class="case-media">
-        <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
-          <img src="assets/case-video-thumb.png" alt="Play Case Study Video">
-        </a>
-      </div>
-      <div class="case-content">
-        <h2>An expert in our back pocket</h2>
-        <p>Discover how SSE Energy doubled online bookings with our futuristic site.</p>
-        <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="btn-primary">Watch the full story</a>
-      </div>
+      <div class="case-media"><a href="https://youtu.be/dQw4w9WgXcQ" target="_blank"><img src="assets/case-video-thumb.png" alt="Play Case Study Video"></a></div>
+      <div class="case-content"><h2>An expert in our back pocket</h2><p>Discover how SSE Energy doubled online bookings with our futuristic site.</p><a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="btn-primary">Watch the full story</a></div>
     </div>
   </section>
 
   <!-- Process & Team -->
   <section class="process-section" id="process-team">
-    <div class="container process-inner">
-      <h2>Our Four-Step Process</h2>
+    <div class="container process-inner"><h2>Our Four-Step Process</h2>
       <div class="process-steps">
-        <div class="step">
-          <div class="step-icon">🧩</div>
-          <h3>Strategise</h3>
-          <p>Dive deep into goals & audience to map your success path.</p>
-        </div>
-        <div class="step">
-          <div class="step-icon">🎨</div>
-          <h3>Design</h3>
-          <p>Create intuitive, brand-forward interfaces that engage deeply.</p>
-        </div>
-        <div class="step">
-          <div class="step-icon">💻</div>
-          <h3>Develop</h3>
-          <p>Build performant, responsive sites with clean, future-ready code.</p>
-        </div>
-        <div class="step">
-          <div class="step-icon">⚙️</div>
-          <h3>Optimise</h3>
-          <p>Continuously refine using data to maximise conversions.</p>
-        </div>
+        <div class="step"><div class="step-icon">🧩</div><h3>Strategise</h3><p>Dive deep into goals & audience to map your success path.</p></div>
+        <div class="step"><div class="step-icon">🎨</div><h3>Design</h3><p>Create intuitive, brand-forward interfaces that engage deeply.</p></div>
+        <div class="step"><div class="step-icon">💻</div><h3>Develop</h3><p>Build performant, responsive sites with clean, future-ready code.</p></div>
+        <div class="step"><div class="step-icon">⚙️</div><h3>Optimise</h3><p>Continuously refine using data to maximise conversions.</p></div>
       </div>
       <p>Meet our team of 150+ experts, united by a passion for innovation.</p>
     </div>
@@ -390,24 +365,11 @@
 
   <!-- Insights & Resources -->
   <section class="insights-section" id="insights">
-    <div class="container insights-inner">
-      <h2>Explore More Insights</h2>
+    <div class="container insights-inner"><h2>Explore More Insights</h2>
       <div class="insights-cards">
-        <div class="insight-card">
-          <h4>5 Signs Your HVAC Site Needs a Redesign</h4>
-          <p>Identify the key indicators that your website is underperforming.</p>
-          <a href="#" class="btn-primary">Read more</a>
-        </div>
-        <div class="insight-card">
-          <h4>Maximizing Lead Gen with Plumbing Sites</h4>
-          <p>Top strategies to convert visitors into customers seamlessly.</p>
-          <a href="#" class="btn-primary">Read more</a>
-        </div>
-        <div class="insight-card">
-          <h4>Electrify Your Online Presence</h4>
-          <p>Optimize your electrical contracting website for speed & conversion.</p>
-          <a href="#" class="btn-primary">Read more</a>
-        </div>
+        <div class="insight-card"><h4>5 Signs Your HVAC Site Needs a Redesign</h4><p>Identify the key indicators that your website is underperforming.</p><a href="#" class="btn-primary">Read more</a></div>
+        <div class="insight-card"><h4>Maximizing Lead Gen with Plumbing Sites</h4><p>Top strategies to convert visitors into customers seamlessly.</p><a href="#" class="btn-primary">Read more</a></div>
+        <div class="insight-card"><h4>Electrify Your Online Presence</h4><p>Optimize your electrical contracting website for speed & conversion.</p><a href="#" class="btn-primary">Read more</a></div>
       </div>
     </div>
   </section>

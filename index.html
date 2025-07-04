@@ -9,6 +9,7 @@
       /* Color Palette */
       --color-bg-dark: #0a0a0f;
       --color-text-light: #e0e0e0;
+      --color-text-hero: #ffffff;
       --color-neon: #00fff0;
       --color-brand-accent: #ff6600;
       --color-cta-text: #0a0a0f;
@@ -53,20 +54,6 @@
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
     .logo { font-family: var(--font-heading); font-size: var(--fz-xl); font-weight: bold; }
-    nav ul { display: flex; gap: var(--sp-lg); list-style: none; margin: 0; }
-    nav li { position: relative; }
-    nav > ul > li > a { font-weight: 500; }
-    .submenu {
-      position: absolute;
-      top: 100%; left: 0;
-      background: #13131a;
-      padding: var(--sp-md);
-      border-radius: var(--radius);
-      display: none;
-      box-shadow: var(--shadow);
-    }
-    nav li:hover .submenu { display: block; }
-    .submenu a { display: block; margin-bottom: var(--sp-xs); }
     .nav-toggle {
       display: none;
       font-size: 1.5rem;
@@ -75,6 +62,23 @@
       color: var(--color-text-light);
       cursor: pointer;
     }
+    nav ul { display: flex; gap: var(--sp-lg); list-style: none; margin: 0; }
+    nav ul.open { display: flex; }
+    nav li { position: relative; }
+    nav > ul > li > a { font-weight: 500; padding: var(--sp-xs) 0; display: block; }
+    .submenu {
+      position: absolute;
+      top: 100%; left: 0;
+      background: #13131a;
+      padding: var(--sp-md);
+      border-radius: var(--radius);
+      display: none;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+    }
+    .submenu.open { display: flex; }
+    nav li:hover .submenu { display: block; }
+    .submenu a, .submenu p { color: var(--color-text-light); margin-bottom: var(--sp-xs); font-size: var(--fz-base); }
     .btn-primary {
       background: var(--color-neon);
       color: var(--color-cta-text);
@@ -109,7 +113,7 @@
       background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
       pointer-events: none;
     }
-  .hero-inner {
+    .hero-inner {
       position: relative;
       z-index: 1;
       text-align: center;
@@ -118,59 +122,118 @@
       transform: translateY(-50%);
       padding: 0 var(--sp-sm);
     }
-    .hero-inner h1 { font-family: var(--font-heading); font-size: var(--fz-2xl); margin-bottom: var(--sp-sm); color: var(--color-text-hero); }
-    .hero-inner p { font-size: var(--fz-lg); margin-bottom: var(--sp-md); color: var(--color-text-hero); }
-    /* Value Proposition Cards */
+    .hero-inner h1 { font-family: var(--font-heading); font-size: var(--fz-2xl); margin-bottom: var(--sp-sm); }
+    .hero-inner p  { font-size: var(--fz-lg); margin-bottom: var(--sp-md); }
+
+    /* Key Proposition Cards */
     .value-prop-section { padding: var(--sp-xl) 0; background: #13131a; }
     .prop-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }
-    .prop-card { background: rgba(20,20,28,0.9); padding: var(--sp-md); border-radius: var(--radius); box-shadow: var(--shadow); flex: 1 1 280px; text-align: center; }
+    .prop-card {
+      background: rgba(20,20,28,0.9);
+      padding: var(--sp-md);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      flex: 1 1 280px;
+      text-align: center;
+    }
     .prop-card h3 { font-family: var(--font-heading); margin-bottom: var(--sp-xs); }
-    .prop-card p { margin-bottom: var(--sp-sm); color: var(--color-text-light); }
+    .prop-card p  { margin-bottom: var(--sp-sm); color: var(--color-text-light); }
 
     /* Trust Signals */
     .trust-section { padding: var(--sp-xl) 0; text-align: center; }
     .trust-section h2 { font-family: var(--font-heading); margin-bottom: var(--sp-md); }
-    .logo-grid { display: flex; flex-wrap: wrap; gap: var(--sp-lg); justify-content: center; align-items: center; }
-    .logo-grid img { filter: saturate(0%); opacity: 0.6; transition: var(--transition); max-height: 50px; }
+    .logo-grid {
+      display: flex; flex-wrap: wrap; gap: var(--sp-lg);
+      justify-content: center; align-items: center;
+    }
+    .logo-grid img {
+      filter: saturate(0%); opacity: 0.6;
+      transition: var(--transition); max-height: 50px;
+    }
     .logo-grid img:hover { filter: none; opacity: 1; }
 
     /* Services & Outcomes */
     .services-section { padding: var(--sp-xl) 0; background: #13131a; }
-    .services-section h2 { text-align: center; font-family: var(--font-heading); margin-bottom: var(--sp-md); }
-    .service-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }
-    .service-card { background: rgba(20,20,28,0.9); padding: var(--sp-md); border-radius: var(--radius); box-shadow: var(--shadow); flex: 1 1 250px; text-align: center; }
+    .services-section h2 {
+      text-align: center; font-family: var(--font-heading); margin-bottom: var(--sp-md);
+    }
+    .service-cards {
+      display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center;
+    }
+    .service-card {
+      background: rgba(20,20,28,0.9);
+      padding: var(--sp-md);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      flex: 1 1 250px;
+      text-align: center;
+    }
     .service-card h3 { margin-bottom: var(--sp-xs); }
-    .service-card p { color: var(--color-text-light); }
+    .service-card p  { color: var(--color-text-light); }
 
     /* Case Study Highlight */
     .case-section { padding: var(--sp-xl) 0; text-align: center; }
-    .case-inner { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-lg); justify-content: center; }
-    .case-media img { border-radius: var(--radius); box-shadow: var(--shadow); max-width: 100%; }
+    .case-inner {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: var(--sp-lg); justify-content: center;
+    }
+    .case-media img {
+      border-radius: var(--radius); box-shadow: var(--shadow); max-width: 100%;
+    }
     .case-content h2 { font-family: var(--font-heading); margin-bottom: var(--sp-sm); }
-    .case-content p { margin-bottom: var(--sp-md); color: var(--color-text-light); }
+    .case-content p  { margin-bottom: var(--sp-md); color: var(--color-text-light); }
 
     /* Process & Team */
     .process-section { padding: var(--sp-xl) 0; background: #13131a; text-align: center; }
-    .process-steps { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; margin-bottom: var(--sp-lg); }
-    .step { background: rgba(20,20,28,0.9); padding: var(--sp-md); border-radius: var(--radius); box-shadow: var(--shadow); flex: 1 1 180px; }
+    .process-steps {
+      display: flex; flex-wrap: wrap; gap: var(--sp-md);
+      justify-content: center; margin-bottom: var(--sp-lg);
+    }
+    .step {
+      background: rgba(20,20,28,0.9);
+      padding: var(--sp-md);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      flex: 1 1 180px;
+    }
     .step-icon { font-size: 2rem; margin-bottom: var(--sp-xs); }
 
     /* Insights & Resources */
     .insights-section { padding: var(--sp-xl) 0; }
-    .insights-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }
-    .insight-card { background: rgba(20,20,28,0.9); padding: var(--sp-md); border-radius: var(--radius); box-shadow: var(--shadow); flex: 1 1 300px; text-align: center; }
+    .insights-cards {
+      display: flex; flex-wrap: wrap; gap: var(--sp-md);
+      justify-content: center;
+    }
+    .insight-card {
+      background: rgba(20,20,28,0.9);
+      padding: var(--sp-md);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      flex: 1 1 300px;
+      text-align: center;
+    }
     .insight-card h4 { margin-bottom: var(--sp-xs); }
-    .insight-card p { margin-bottom: var(--sp-sm); color: var(--color-text-light); }
+    .insight-card p  { margin-bottom: var(--sp-sm); color: var(--color-text-light); }
 
     /* Footer & Compliance */
-    footer { background: rgba(10,10,15,0.9); padding: var(--sp-lg) 0; color: var(--color-text-light); }
-    .footer-nav ul { display: flex; flex-wrap: wrap; gap: var(--sp-lg); list-style: none; justify-content: center; margin-bottom: var(--sp-md); padding: 0; }
-    .footer-compliance p { text-align: center; margin: var(--sp-xs) 0; font-size: var(--fz-base); }
+    footer {
+      background: rgba(10,10,15,0.9);
+      padding: var(--sp-lg) 0;
+      color: var(--color-text-light);
+    }
+    .footer-nav ul {
+      display: flex; flex-wrap: wrap; gap: var(--sp-lg);
+      list-style: none; justify-content: center;
+      margin-bottom: var(--sp-md); padding: 0;
+    }
+    .footer-compliance p {
+      text-align: center; margin: var(--sp-xs) 0; font-size: var(--fz-base);
+    }
 
     /* Responsive */
     @media (max-width: 600px) {
       .hero-inner h1 { font-size: var(--fz-xl); }
-      .hero-inner p { font-size: var(--fz-base); }
+      .hero-inner p  { font-size: var(--fz-base); }
       nav ul { gap: var(--sp-sm); }
     }
   </style>
@@ -187,10 +250,12 @@
           <li>
             <a href="#services">What we do</a>
             <div class="submenu">
-              <a href="#design">Digital Product Design</a>
-              <a href="#research">User Research</a>
-              <a href="#architecture">Technical Architecture</a>
-              <a href="#optimisation">Experience Optimisation</a>
+              <a href="#web-design">Web Design & Development</a>
+              <p>A custom design experience tailored for maximum ROI on your marketing efforts.</p>
+              <a href="#digital-marketing">Digital Marketing</a>
+              <p>Multi-channel, blended search strategies for full-funnel lead generation.</p>
+              <a href="#maintenance-hosting">Maintenance & Hosting</a>
+              <p>Reliable site maintenance and hosting to keep your digital presence running 24/7.</p>
             </div>
           </li>
           <li><a href="#cases">Case studies</a></li>
@@ -275,7 +340,9 @@
   <section class="case-section" id="case-study">
     <div class="case-inner container">
       <div class="case-media">
-        <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank"><img src="assets/case-video-thumb.png" alt="Play Case Study Video"></a>
+        <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
+          <img src="assets/case-video-thumb.png" alt="Play Case Study Video">
+        </a>
       </div>
       <div class="case-content">
         <h2>An expert in our back pocket</h2>
@@ -360,11 +427,22 @@
   <script>
     // Mobile menu toggle
     const navToggle = document.querySelector('.nav-toggle');
-    const navList = document.querySelector('nav ul');
+    const navList   = document.querySelector('nav ul');
     navToggle.addEventListener('click', () => navList.classList.toggle('open'));
 
+    // Submenu toggle for mobile
+    document.querySelectorAll('nav > ul > li > a').forEach(link => {
+      const submenu = link.nextElementSibling;
+      if (submenu && submenu.classList.contains('submenu')) {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          submenu.classList.toggle('open');
+        });
+      }
+    });
+
     // Hero background slider
-    const hero = document.querySelector('.hero-section');
+    const hero   = document.querySelector('.hero-section');
     const slides = [
       'url("assets/bg-flow.png")',
       'url("assets/bg-pipes.png")',

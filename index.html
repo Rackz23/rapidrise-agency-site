@@ -42,136 +42,140 @@
     a { color: inherit; text-decoration: none; }
     .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-    /* Navigation & Header */
-    header#main-nav {
-      background: rgba(10,10,15,0.85);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
-      top: 0; z-index: 1000;
-      padding: var(--sp-sm) 0;
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-family: var(--font-heading);
-      font-size: var(--fz-xl);
-      font-weight: bold;
-    }
-    .nav-toggle {
-      display: none;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      color: var(--color-text-light);
-      cursor: pointer;
-    }
-    nav ul {
-      display: flex;
-      gap: var(--sp-lg);
-      list-style: none;
-      margin: 0;
-    }
-    nav ul.open {
-      display: flex;
-    }
-    nav li {
-      position: relative;
-    }
-    nav > ul > li > a {
-      font-weight: 500;
-      padding: var(--sp-xs) 0;
-      display: block;
-    }
-    .submenu {
-      position: absolute;
-      top: 100%; left: 0;
-      background: #13131a;
-      padding: var(--sp-md);
-      border-radius: var(--radius);
-      display: none;
-      flex-direction: column;
-      box-shadow: var(--shadow);
-      z-index: 1001;
-    }
-    .submenu.open {
-      display: flex;
-    }
-    nav li:hover .submenu {
-      display: block;
-    }
-    /* Submenu Item Styles */
-    .submenu-item {
-      margin-bottom: var(--sp-sm);
-    }
-    .submenu-item strong {
-      display: block;
-      color: var(--color-neon);
-      font-size: var(--fz-base);
-      margin-bottom: var(--sp-xs);
-    }
-    .submenu-item span {
-      display: block;
-      color: var(--color-text-light);
-      font-size: var(--fz-base);
-      line-height: 1.4;
-    }
-    .btn-primary {
-      background: var(--color-neon);
-      color: var(--color-cta-text);
-      padding: var(--sp-xs) var(--sp-md);
-      border-radius: var(--radius);
-      box-shadow: 0 0 8px var(--color-neon);
-      transition: var(--transition);
-    }
-    .btn-primary:hover {
-      box-shadow: 0 0 16px var(--color-neon);
-      transform: scale(1.05);
-    }
+/* Navigation & Header */
+header#main-nav {
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0; left: 0;
+  z-index: 1000;
+  padding: var(--sp-sm) 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: var(--font-heading);
+  font-size: var(--fz-xl);
+  font-weight: bold;
+}
+/* Hamburger / Close toggle */
+.nav-toggle {
+  display: none;
+  position: fixed;
+  top: var(--sp-sm);
+  right: var(--sp-sm);
+  font-size: 1.75rem;
+  background: none;
+  border: none;
+  color: var(--color-neon);
+  cursor: pointer;
+  z-index: 1002;
+}
+nav ul {
+  display: flex;
+  gap: var(--sp-lg);
+  list-style: none;
+  margin: 0;
+}
+nav ul.open {
+  display: flex;
+}
+nav li {
+  position: relative;
+}
+nav > ul > li > a {
+  font-weight: 500;
+  padding: var(--sp-xs) 0;
+  display: block;
+}
+/* Desktop submenu */
+.submenu {
+  position: absolute;
+  top: 100%; left: 0;
+  background: #13131a;
+  padding: var(--sp-md);
+  border-radius: var(--radius);
+  display: none;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  z-index: 1001;
+}
+.submenu.open,
+nav li:hover .submenu {
+  display: flex;
+}
+/* Submenu Item Styles */
+.submenu-item {
+  margin-bottom: var(--sp-sm);
+}
+.submenu-item strong {
+  display: block;
+  color: var(--color-neon);
+  font-size: var(--fz-base);
+  margin-bottom: var(--sp-xs);
+}
+.submenu-item span {
+  display: block;
+  color: var(--color-text-light);
+  font-size: var(--fz-base);
+  line-height: 1.4;
+}
+.btn-primary {
+  background: var(--color-neon);
+  color: var(--color-cta-text);
+  padding: var(--sp-xs) var(--sp-md);
+  border-radius: var(--radius);
+  box-shadow: 0 0 8px var(--color-neon);
+  transition: var(--transition);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 16px var(--color-neon);
+  transform: scale(1.05);
+}
 
-    /* Responsive & Mobile Menu */
-    @media (max-width: 768px) {
-      .nav-toggle {
-        display: block;
-      }
-      nav ul {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: var(--color-bg-dark);
-        padding: var(--sp-xl) var(--sp-lg) 0;
-      }
-      nav ul.open {
-        display: flex;
-      }
-      nav ul li {
-        margin-bottom: var(--sp-md);
-      }
-      nav > ul > li > a {
-        font-size: var(--fz-xl);
-        color: var(--color-neon);
-      }
-      .submenu {
-        position: static;
-        padding-left: var(--sp-lg);
-        box-shadow: none;
-      }
-      .submenu.open {
-        display: flex;
-      }
-      .submenu-item strong {
-        font-size: var(--fz-lg);
-      }
-      .submenu-item span {
-        font-size: var(--fz-base);
-      }
-    }
-
+/* Responsive & Mobile Menu */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--color-bg-dark);
+    padding: var(--sp-xl) var(--sp-lg) 0;
+  }
+  nav ul.open {
+    display: flex;
+  }
+  nav ul li {
+    margin-bottom: var(--sp-md);
+  }
+  nav > ul > li > a {
+    font-size: var(--fz-xl);
+    color: var(--color-neon);
+  }
+  .submenu {
+    position: static;
+    padding-left: var(--sp-lg);
+    box-shadow: none;
+  }
+  .submenu.open {
+    display: flex;
+  }
+  .submenu-item strong {
+    font-size: var(--fz-lg);
+  }
+  .submenu-item span {
+    font-size: var(--fz-base);
+  }
+}
     /* Hero with Slider & Gradient Overlay */
     .hero-section {
       position: relative;
@@ -384,41 +388,47 @@
   </style>
 </head>
 <body>
-  <!-- Navigation & Header -->
-  <header id="main-nav">
-    <div class="container nav-inner">
-      <a href="/" class="logo">RapidRise Agency</a>
-      <button class="nav-toggle" aria-label="Toggle Menu">☰</button>
-      <nav>
-        <ul>
-          <li><a href="#about">Who we are</a></li>
-          <li>
-            <a href="#services">What we do</a>
-            <div class="submenu">
-              <div class="submenu-item">
-                <strong>Web Design & Dev</strong>
-                <span>Custom designs for max ROI</span>
-              </div>
-              <div class="submenu-item">
-                <strong>Digital Marketing</strong>
-                <span>Full-funnel lead gen</span>
-              </div>
-              <div class="submenu-item">
-                <strong>Maintenance & Hosting</strong>
-                <span>24/7 site care & uptime</span>
-              </div>
-            </div>
-          </li>
-          <li><a href="#cases">Case studies</a></li>
-          <li><a href="#partners">Partners</a></li>
-          <li><a href="#insights">Insights</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <a href="#contact" class="btn-primary">Get in touch</a>
-    </div>
-  </header>
+<!-- Navigation & Header -->
+<header id="main-nav">
+  <div class="container nav-inner">
+    <!-- 1. Logo -->
+    <a href="/" class="logo">RapidRise Agency</a>
 
+    <!-- 2. Primary CTA -->
+    <a href="#contact" class="btn-primary">Get in touch</a>
+
+    <!-- 3. Hamburger / Close toggle -->
+    <button class="nav-toggle" aria-label="Toggle Menu">☰</button>
+
+    <!-- 4. Full-screen menu panel -->
+    <nav>
+      <ul>
+        <li><a href="#about">Who we are</a></li>
+        <li>
+          <a href="#services">What we do</a>
+          <div class="submenu">
+            <a href="/web-design-dev" class="submenu-item">
+              <strong>Web Design & Dev</strong>
+              <span>Custom designs for max ROI</span>
+            </a>
+            <a href="/digital-marketing" class="submenu-item">
+              <strong>Digital Marketing</strong>
+              <span>Full-funnel lead gen</span>
+            </a>
+            <a href="/maintenance-hosting" class="submenu-item">
+              <strong>Maintenance & Hosting</strong>
+              <span>24/7 site care & uptime</span>
+            </a>
+          </div>
+        </li>
+        <li><a href="#cases">Case studies</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
   <!-- Hero & Value Proposition with Sliding Background -->
   <section class="hero-section" id="hero"></section>
   <div class="hero-inner">

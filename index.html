@@ -42,213 +42,127 @@
     a { color: inherit; text-decoration: none; }
     .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-/* Navigation & Header */
-header#main-nav {
-  background: rgba(10,10,15,0.85);
-  backdrop-filter: blur(10px);
-  position: fixed;
-  width: 100%;
-  top: 0; left: 0;
-  z-index: 1000;
-  padding: var(--sp-sm) 0;
-}
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  font-family: var(--font-heading);
-  font-size: var(--fz-xl);
-  font-weight: bold;
-}
-/* Hamburger / Close toggle */
-.nav-toggle {
-  display: none;
-  position: fixed;
-  top: var(--sp-sm);
-  right: var(--sp-sm);
-  font-size: 1.75rem;
-  background: none;
-  border: none;
-  color: var(--color-neon);
-  cursor: pointer;
-  z-index: 1002;
-}
-nav ul {
-  display: flex;
-  gap: var(--sp-lg);
-  list-style: none;
-  margin: 0;
-}
-nav ul.open {
-  display: flex;
-}
-nav li {
-  position: relative;
-}
-nav > ul > li > a {
-  font-weight: 500;
-  padding: var(--sp-xs) 0;
-  display: block;
-}
-/* Desktop submenu */
-.submenu {
-  position: absolute;
-  top: 100%; left: 0;
-  background: #13131a;
-  padding: var(--sp-md);
-  border-radius: var(--radius);
-  display: none;
-  flex-direction: column;
-  box-shadow: var(--shadow);
-  z-index: 1001;
-}
-.submenu.open,
-nav li:hover .submenu {
-  display: flex;
-}
-/* Submenu Item Styles */
-.submenu-item {
-  margin-bottom: var(--sp-sm);
-}
-.submenu-item strong {
-  display: block;
-  color: var(--color-neon);
-  font-size: var(--fz-base);
-  margin-bottom: var(--sp-xs);
-}
-.submenu-item span {
-  display: block;
-  color: var(--color-text-light);
-  font-size: var(--fz-base);
-  line-height: 1.4;
-}
-.btn-primary {
-  background: var(--color-neon);
-  color: var(--color-cta-text);
-  padding: var(--sp-xs) var(--sp-md);
-  border-radius: var(--radius);
-  box-shadow: 0 0 8px var(--color-neon);
-  transition: var(--transition);
-}
-.btn-primary:hover {
-  box-shadow: 0 0 16px var(--color-neon);
-  transform: scale(1.05);
-}
+    /* Navigation & Header */
+    header#main-nav {
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0; left: 0;
+      z-index: 1000;
+      padding: var(--sp-sm) 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-md);
+    }
+    .logo img {
+      height: 2rem;
+      width: auto;
+      display: block;
+    }
+    .btn-primary {
+      background: var(--color-neon);
+      color: var(--color-cta-text);
+      padding: var(--sp-xs) var(--sp-md);
+      border-radius: var(--radius);
+      box-shadow: 0 0 8px var(--color-neon);
+      transition: var(--transition);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 16px var(--color-neon);
+      transform: scale(1.05);
+    }
+    /* Hamburger / Close toggle */
+    .nav-toggle {
+      display: none;
+      position: fixed;
+      top: var(--sp-sm);
+      right: var(--sp-lg);
+      font-size: 1.75rem;
+      background: none;
+      border: none;
+      color: var(--color-neon);
+      cursor: pointer;
+      z-index: 1002;
+    }
+    nav ul {
+      display: flex;
+      gap: var(--sp-lg);
+      list-style: none;
+      margin: 0;
+    }
+    nav ul.open {
+      display: flex;
+    }
+    nav li {
+      position: relative;
+    }
+    nav > ul > li > a {
+      font-weight: 500;
+      padding: var(--sp-xs) 0;
+      display: block;
+    }
+    /* Desktop submenu */
+    .submenu {
+      position: absolute;
+      top: 100%; left: 0;
+      background: #13131a;
+      padding: var(--sp-md);
+      border-radius: var(--radius);
+      display: none;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+      z-index: 1001;
+    }
+    .submenu.open,
+    nav li:hover .submenu {
+      display: flex;
+    }
+    .submenu-item {
+      display: block;
+      margin-bottom: var(--sp-sm);
+    }
+    .submenu-item strong {
+      color: var(--color-neon);
+      font-size: var(--fz-base);
+      margin-bottom: var(--sp-xs);
+    }
+    .submenu-item span {
+      color: var(--color-text-light);
+      font-size: var(--fz-base);
+      line-height: 1.4;
+    }
 
-/* Responsive & Mobile Menu */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-  nav ul {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: var(--color-bg-dark);
-    padding: var(--sp-xl) var(--sp-lg) 0;
-  }
-  nav ul.open {
-    display: flex;
-  }
-  nav ul li {
-    margin-bottom: var(--sp-md);
-  }
-  nav > ul > li > a {
-    font-size: var(--fz-xl);
-    color: var(--color-neon);
-  }
-  .submenu {
-    position: static;
-    padding-left: var(--sp-lg);
-    box-shadow: none;
-  }
-  .submenu.open {
-    display: flex;
-  }
-  .submenu-item strong {
-    font-size: var(--fz-lg);
-  }
-  .submenu-item span {
-    font-size: var(--fz-base);
-  }
-}
-  <!-- Navigation & Header -->
-  <header id="main-nav">
-    <div class="container nav-inner">
-      <a href="/" class="logo">
-       <a href="/" class="logo">
- <img src="assets/company-logo.png" alt="RapidRise Agency" />
-  </a>
-      <a href="#contact" class="btn-primary">Get in touch</a>
-      <button class="nav-toggle" aria-label="Toggle Menu">☰</button>
-      <nav>
-        <ul>
-          <li><a href="#about">Who we are</a></li>
-          <li>
-            <a href="#services">What we do</a>
-            <div class="submenu">
-              <a href="/web-design-dev" class="submenu-item">
-                <strong>Web Design & Dev</strong>
-                <span>Custom designs for max ROI</span>
-              </a>
-              <a href="/digital-marketing" class="submenu-item">
-                <strong>Digital Marketing</strong>
-                <span>Full-funnel lead gen</span>
-              </a>
-              <a href="/maintenance-hosting" class="submenu-item">
-                <strong>Maintenance & Hosting</strong>
-                <span>24/7 site care & uptime</span>
-              </a>
-            </div>
-          </li>
-          <li><a href="#cases">Case studies</a></li>
-          <li><a href="#partners">Partners</a></li>
-          <li><a href="#insights">Insights</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero & Value Proposition with Sliding Background -->
-  <section class="hero-section" id="hero"></section>
-  <div class="hero-inner">
-    <!-- your existing hero content -->
-  </div>
-
-  <!-- Rest of homepage sections unchanged... -->
-
-  <script>
-    // Mobile menu toggle & 🍔 ↔ × swap
-    const navToggle = document.querySelector('.nav-toggle');
-    const navList   = document.querySelector('nav ul');
-    navToggle.addEventListener('click', () => {
-      const open = navList.classList.toggle('open');
-      navToggle.textContent = open ? '×' : '☰';
-    });
-
-    // Submenu tap-to-open on mobile
-    document.querySelectorAll('nav > ul > li > a').forEach(link => {
-      const submenu = link.nextElementSibling;
-      if (submenu?.classList.contains('submenu')) {
-        link.addEventListener('click', e => {
-          if (window.innerWidth <= 768) {
-            e.preventDefault();
-            submenu.classList.toggle('open');
-          }
-        });
+    /* Responsive & Mobile Menu */
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: var(--color-bg-dark);
+        padding: var(--sp-xl) var(--sp-lg) 0;
       }
-    });
-
-    // Hero background slider (unchanged)
-    // ...
-  </script>
-</body>
-</html>
+      nav ul.open { display: flex; }
+      nav ul li { margin-bottom: var(--sp-md); }
+      nav > ul > li > a {
+        font-size: var(--fz-xl);
+        color: var(--color-neon);
+      }
+      .submenu {
+        position: static;
+        padding-left: var(--sp-lg);
+        box-shadow: none;
+      }
+      .submenu.open { display: flex; }
+      .submenu-item strong { font-size: var(--fz-lg); }
+      .submenu-item span { font-size: var(--fz-base); }
+    }
 
     /* Hero with Slider & Gradient Overlay */
     .hero-section {
@@ -283,16 +197,8 @@ nav li:hover .submenu {
     }
 
     /* Key Proposition Cards */
-    .value-prop-section {
-      padding: var(--sp-xl) 0;
-      background: #13131a;
-    }
-    .prop-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-md);
-      justify-content: center;
-    }
+    .value-prop-section { padding: var(--sp-xl) 0; background: #13131a; }
+    .prop-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }
     .prop-card {
       background: rgba(20,20,28,0.9);
       padding: var(--sp-md);
@@ -301,58 +207,20 @@ nav li:hover .submenu {
       flex: 1 1 280px;
       text-align: center;
     }
-    .prop-card h3 {
-      font-family: var(--font-heading);
-      margin-bottom: var(--sp-xs);
-    }
-    .prop-card p {
-      margin-bottom: var(--sp-sm);
-      color: var(--color-text-light);
-    }
+    .prop-card h3 { font-family: var(--font-heading); margin-bottom: var(--sp-xs); }
+    .prop-card p { margin-bottom: var(--sp-sm); color: var(--color-text-light); }
 
     /* Trust Signals */
-    .trust-section {
-      padding: var(--sp-xl) 0;
-      text-align: center;
-    }
-    .trust-section h2 {
-      font-family: var(--font-heading);
-      margin-bottom: var(--sp-md);
-    }
-    .logo-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-lg);
-      justify-content: center;
-      align-items: center;
-    }
-    .logo-grid img {
-      filter: saturate(0%);
-      opacity: 0.6;
-      transition: var(--transition);
-      max-height: 50px;
-    }
-    .logo-grid img:hover {
-      filter: none;
-      opacity: 1;
-    }
+    .trust-section { padding: var(--sp-xl) 0; text-align: center; }
+    .trust-section h2 { font-family: var(--font-heading); margin-bottom: var(--sp-md); }
+    .logo-grid { display: flex; flex-wrap: wrap; gap: var(--sp-lg); justify-content: center; align-items: center; }
+    .logo-grid img { filter: saturate(0%); opacity: 0.6; transition: var(--transition); max-height: 50px; }
+    .logo-grid img:hover { filter: none; opacity: 1; }
 
     /* Services & Outcomes */
-    .services-section {
-      padding: var(--sp-xl) 0;
-      background: #13131a;
-    }
-    .services-section h2 {
-      text-align: center;
-      font-family: var(--font-heading);
-      margin-bottom: var(--sp-md);
-    }
-    .service-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-md);
-      justify-content: center;
-    }
+    .services-section { padding: var(--sp-xl) 0; background: #13131a; }
+    .services-section h2 { text-align: center; font-family: var(--font-heading); margin-bottom: var(--sp-md); }
+    .service-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }
     .service-card {
       background: rgba(20,20,28,0.9);
       padding: var(--sp-md);
@@ -362,47 +230,18 @@ nav li:hover .submenu {
       text-align: center;
     }
     .service-card h3 { margin-bottom: var(--sp-xs); }
-    .service-card p  { color: var(--color-text-light); }
+    .service-card p { color: var(--color-text-light); }
 
     /* Case Study Highlight */
-    .case-section {
-      padding: var(--sp-xl) 0;
-      text-align: center;
-    }
-    .case-inner {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--sp-lg);
-      justify-content: center;
-    }
-    .case-media img {
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      max-width: 100%;
-    }
-    .case-content h2 {
-      font-family: var(--font-heading);
-      margin-bottom: var(--sp-sm);
-    }
-    .case-content p {
-      margin-bottom: var(--sp-md);
-      color: var(--color-text-light);
-    }
+    .case-section { padding: var(--sp-xl) 0; text-align: center; }
+    .case-inner { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-lg); justify-content: center; }
+    .case-media img { border-radius: var(--radius); box-shadow: var(--shadow); max-width: 100%; }
+    .case-content h2 { font-family: var(--font-heading); margin-bottom: var(--sp-sm); }
+    .case-content p { margin-bottom: var(--sp-md); color: var(--color-text-light); }
 
     /* Process & Team */
-    .process-section {
-      padding: var(--sp-xl) 0;
-      background: #13131a;
-      text-align: center;
-    }
-    .process-steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-md);
-      justify-content: center;
-      margin-bottom: var(--sp-lg);
-    }
+    .process-section { padding: var(--sp-xl) 0; background: #13131a; text-align: center; }
+    .process-steps { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; margin-bottom: var(--sp-lg); }
     .step {
       background: rgba(20,20,28,0.9);
       padding: var(--sp-md);
@@ -410,21 +249,11 @@ nav li:hover .submenu {
       box-shadow: var(--shadow);
       flex: 1 1 180px;
     }
-    .step-icon {
-      font-size: 2rem;
-      margin-bottom: var(--sp-xs);
-    }
+    .step-icon { font-size: 2rem; margin-bottom: var(--sp-xs); }
 
     /* Insights & Resources */
-    .insights-section {
-      padding: var(--sp-xl) 0;
-    }
-    .insights-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-md);
-      justify-content: center;
-    }
+    .insights-section { padding: var(--sp-xl) 0; }
+    .insights-cards { display: flex; flex-wrap: wrap; gap: var(--sp-md); justify-content: center; }
     .insight-card {
       background: rgba(20,20,28,0.9);
       padding: var(--sp-md);
@@ -434,10 +263,7 @@ nav li:hover .submenu {
       text-align: center;
     }
     .insight-card h4 { margin-bottom: var(--sp-xs); }
-    .insight-card p  {
-      margin-bottom: var(--sp-sm);
-      color: var(--color-text-light);
-    }
+    .insight-card p { margin-bottom: var(--sp-sm); color: var(--color-text-light); }
 
     /* Footer & Compliance */
     footer {
@@ -446,65 +272,55 @@ nav li:hover .submenu {
       color: var(--color-text-light);
     }
     .footer-nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-lg);
-      list-style: none;
-      justify-content: center;
-      margin-bottom: var(--sp-md);
-      padding: 0;
+      display: flex; flex-wrap: wrap; gap: var(--sp-lg);
+      list-style: none; justify-content: center;
+      margin-bottom: var(--sp-md); padding: 0;
     }
-    .footer-compliance p {
-      text-align: center;
-      margin: var(--sp-xs) 0;
-      font-size: var(--fz-base);
-    }
+    .footer-compliance p { text-align: center; margin: var(--sp-xs) 0; font-size: var(--fz-base); }
   </style>
 </head>
 <body>
-<!-- Navigation & Header -->
-<header id="main-nav">
-  <div class="container nav-inner">
-    <!-- 1. Logo -->
-   <a href="/" class="logo">
- <img src="assets/company-logo.png" alt="RapidRise Agency" />
- </a>
+  <!-- Navigation & Header -->
+  <header id="main-nav">
+    <div class="container nav-inner">
+      <!-- 1. Logo -->
+      <a href="/" class="logo">
+        <img src="assets/company-logo.png" alt="RapidRise Agency">
+      </a>
+      <!-- 2. Primary CTA -->
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <!-- 3. Hamburger / Close toggle -->
+      <button class="nav-toggle" aria-label="Toggle Menu">☰</button>
+      <!-- 4. Full-screen menu panel -->
+      <nav>
+        <ul>
+          <li><a href="#about">Who we are</a></li>
+          <li>
+            <a href="#services">What we do</a>
+            <div class="submenu">
+              <a href="/web-design-dev" class="submenu-item">
+                <strong>Web Design & Dev</strong>
+                <span>Custom designs for max ROI</span>
+              </a>
+              <a href="/digital-marketing" class="submenu-item">
+                <strong>Digital Marketing</strong>
+                <span>Full-funnel lead gen</span>
+              </a>
+              <a href="/maintenance-hosting" class="submenu-item">
+                <strong>Maintenance & Hosting</strong>
+                <span>24/7 site care & uptime</span>
+              </a>
+            </div>
+          </li>
+          <li><a href="#cases">Case studies</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#insights">Insights</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- 2. Primary CTA -->
-    <a href="#contact" class="btn-primary">Get in touch</a>
-
-    <!-- 3. Hamburger / Close toggle -->
-    <button class="nav-toggle" aria-label="Toggle Menu">☰</button>
-
-    <!-- 4. Full-screen menu panel -->
-    <nav>
-      <ul>
-        <li><a href="#about">Who we are</a></li>
-        <li>
-          <a href="#services">What we do</a>
-          <div class="submenu">
-            <a href="/web-design-dev" class="submenu-item">
-              <strong>Web Design & Dev</strong>
-              <span>Custom designs for max ROI</span>
-            </a>
-            <a href="/digital-marketing" class="submenu-item">
-              <strong>Digital Marketing</strong>
-              <span>Full-funnel lead gen</span>
-            </a>
-            <a href="/maintenance-hosting" class="submenu-item">
-              <strong>Maintenance & Hosting</strong>
-              <span>24/7 site care & uptime</span>
-            </a>
-          </div>
-        </li>
-        <li><a href="#cases">Case studies</a></li>
-        <li><a href="#partners">Partners</a></li>
-        <li><a href="#insights">Insights</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
   <!-- Hero & Value Proposition with Sliding Background -->
   <section class="hero-section" id="hero"></section>
   <div class="hero-inner">
@@ -670,10 +486,10 @@ nav li:hover .submenu {
       navToggle.textContent = open ? '×' : '☰';
     });
 
-    // Submenu toggle for mobile
+    // Submenu tap-to-open on mobile
     document.querySelectorAll('nav > ul > li > a').forEach(link => {
       const submenu = link.nextElementSibling;
-      if (submenu && submenu.classList.contains('submenu')) {
+      if (submenu?.classList.contains('submenu')) {
         link.addEventListener('click', e => {
           if (window.innerWidth <= 768) {
             e.preventDefault();
@@ -700,4 +516,3 @@ nav li:hover .submenu {
   </script>
 </body>
 </html>
-

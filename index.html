@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RapidRise Agency</title>
   <style>
     :root {
@@ -14,8 +14,8 @@
       --color-brand-accent: #ff6600;
       --color-cta-text: #0a0a0f;
       /* Typography */
-      --font-sans: 'Inter',sans-serif;
-      --font-heading: 'Montserrat',sans-serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-heading: 'Montserrat', sans-serif;
       --fz-base: 1rem;
       --fz-lg: 1.125rem;
       --fz-xl: 1.25rem;
@@ -31,146 +31,151 @@
       --shadow: 0 4px 6px rgba(0,0,0,0.3);
       --transition: all 0.3s ease-in-out;
     }
-    *,*::before,*::after{box-sizing:border-box;}
+    *, *::before, *::after { box-sizing: border-box; }
     body {
-      margin:0;
-      font-family:var(--font-sans);
-      color:var(--color-text-light);
-      background:var(--color-bg-dark);
-      line-height:1.6;
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--color-text-light);
+      background: var(--color-bg-dark);
+      line-height: 1.6;
     }
-    a{color:inherit;text-decoration:none;}
-    .container{width:90%;max-width:1200px;margin:0 auto;}
+    a { color: inherit; text-decoration: none; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-    /* Navigation & Header */
-    header#main-nav {
-      background:rgba(10,10,15,0.85);
-      backdrop-filter:blur(10px);
-      position:fixed;
-      width:100%;top:0;left:0;
-      z-index:1000;
-      padding:var(--sp-sm) 0;
-    }
-    .nav-inner {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:var(--sp-md); /* uniform spacing between logo, CTA, toggle */
-    }
-    .logo img {
-      height:2rem; /* constrain logo height */
-      width:auto;
-      display:block;
-    }
-    .btn-primary {
-      background:var(--color-neon);
-      color:var(--color-cta-text);
-      padding:var(--sp-xs) var(--sp-md);
-      border-radius:var(--radius);
-      box-shadow:0 0 8px var(--color-neon);
-      transition:var(--transition);
-    }
-    .btn-primary:hover {
-      box-shadow:0 0 16px var(--color-neon);
-      transform:scale(1.05);
-    }
-    /* Hamburger / Close toggle */
-    .nav-toggle {
-      display:none;
-      position:fixed;
-      top:var(--sp-sm);
-      right:var(--sp-lg); /* pushed off the edge slightly */
-      font-size:1.75rem;
-      background:none;
-      border:none;
-      color:var(--color-neon);
-      cursor:pointer;
-      z-index:1002;
-    }
-    nav ul {
-      display:flex;
-      gap:var(--sp-lg);
-      list-style:none;
-      margin:0;
-    }
-    nav ul.open {
-      display:flex;
-    }
-    nav li { position:relative; }
-    nav > ul > li > a {
-      font-weight:500;
-      padding:var(--sp-xs) 0;
-      display:block;
-    }
-    /* Desktop submenu */
-    .submenu {
-      position:absolute;
-      top:100%;left:0;
-      background:#13131a;
-      padding:var(--sp-md);
-      border-radius:var(--radius);
-      display:none;
-      flex-direction:column;
-      box-shadow:var(--shadow);
-      z-index:1001;
-    }
-    .submenu.open,
-    nav li:hover .submenu {
-      display:flex;
-    }
-    /* Submenu items */
-    .submenu-item {
-      display:block;
-      margin-bottom:var(--sp-sm);
-    }
-    .submenu-item strong {
-      display:block;
-      color:var(--color-neon);
-      font-size:var(--fz-base);
-      margin-bottom:var(--sp-xs);
-    }
-    .submenu-item span {
-      display:block;
-      color:var(--color-text-light);
-      font-size:var(--fz-base);
-      line-height:1.4;
-    }
+/* Navigation & Header */
+header#main-nav {
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0; left: 0;
+  z-index: 1000;
+  padding: var(--sp-sm) 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: var(--font-heading);
+  font-size: var(--fz-xl);
+  font-weight: bold;
+}
+/* Hamburger / Close toggle */
+.nav-toggle {
+  display: none;
+  position: fixed;
+  top: var(--sp-sm);
+  right: var(--sp-sm);
+  font-size: 1.75rem;
+  background: none;
+  border: none;
+  color: var(--color-neon);
+  cursor: pointer;
+  z-index: 1002;
+}
+nav ul {
+  display: flex;
+  gap: var(--sp-lg);
+  list-style: none;
+  margin: 0;
+}
+nav ul.open {
+  display: flex;
+}
+nav li {
+  position: relative;
+}
+nav > ul > li > a {
+  font-weight: 500;
+  padding: var(--sp-xs) 0;
+  display: block;
+}
+/* Desktop submenu */
+.submenu {
+  position: absolute;
+  top: 100%; left: 0;
+  background: #13131a;
+  padding: var(--sp-md);
+  border-radius: var(--radius);
+  display: none;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  z-index: 1001;
+}
+.submenu.open,
+nav li:hover .submenu {
+  display: flex;
+}
+/* Submenu Item Styles */
+.submenu-item {
+  margin-bottom: var(--sp-sm);
+}
+.submenu-item strong {
+  display: block;
+  color: var(--color-neon);
+  font-size: var(--fz-base);
+  margin-bottom: var(--sp-xs);
+}
+.submenu-item span {
+  display: block;
+  color: var(--color-text-light);
+  font-size: var(--fz-base);
+  line-height: 1.4;
+}
+.btn-primary {
+  background: var(--color-neon);
+  color: var(--color-cta-text);
+  padding: var(--sp-xs) var(--sp-md);
+  border-radius: var(--radius);
+  box-shadow: 0 0 8px var(--color-neon);
+  transition: var(--transition);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 16px var(--color-neon);
+  transform: scale(1.05);
+}
 
-    /* Responsive & Mobile Menu */
-    @media (max-width:768px) {
-      .nav-toggle { display:block; }
-
-      nav ul {
-        display:none;
-        flex-direction:column;
-        position:fixed;
-        top:0;left:0;
-        width:100%;height:100%;
-        background:var(--color-bg-dark);
-        padding:var(--sp-xl) var(--sp-lg) 0;
-      }
-      nav ul.open { display:flex; }
-      nav ul li { margin-bottom:var(--sp-md); }
-      nav > ul > li > a {
-        font-size:var(--fz-xl);
-        color:var(--color-neon);
-      }
-      .submenu {
-        position:static;
-        padding-left:var(--sp-lg);
-        box-shadow:none;
-      }
-      .submenu.open { display:flex; }
-      .submenu-item strong { font-size:var(--fz-lg); }
-      .submenu-item span { font-size:var(--fz-base); }
-    }
-
-    /* Hero & Value Proposition (rest unchanged...) */
-    .hero-section { /* ... */ }
-    /* Add your existing hero, cards, etc. CSS here */
-  </style>
-</head>
-<body>
+/* Responsive & Mobile Menu */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--color-bg-dark);
+    padding: var(--sp-xl) var(--sp-lg) 0;
+  }
+  nav ul.open {
+    display: flex;
+  }
+  nav ul li {
+    margin-bottom: var(--sp-md);
+  }
+  nav > ul > li > a {
+    font-size: var(--fz-xl);
+    color: var(--color-neon);
+  }
+  .submenu {
+    position: static;
+    padding-left: var(--sp-lg);
+    box-shadow: none;
+  }
+  .submenu.open {
+    display: flex;
+  }
+  .submenu-item strong {
+    font-size: var(--fz-lg);
+  }
+  .submenu-item span {
+    font-size: var(--fz-base);
+  }
+}
   <!-- Navigation & Header -->
   <header id="main-nav">
     <div class="container nav-inner">
